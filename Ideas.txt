@@ -9,3 +9,4 @@ Fondo de Estrellas en Movimiento
 
 *Bonus*
 -Si la partida dura mucho, sale y destruye al enemigo (Final alternativo) 
+sd
