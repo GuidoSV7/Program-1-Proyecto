@@ -1,0 +1,11 @@
+Efecto Nave enemiga Destruida
+Efecto Mi nave destruida
+Los enemigos vectores
+Enemigo Final
+Ataque Final Enemigo Final
+Música de Fondo
+Música al salir el enemigo Final
+Fondo de Estrellas en Movimiento
+
+*Bonus*
+-Si la partida dura mucho, sale y destruye al enemigo (Final alternativo) 

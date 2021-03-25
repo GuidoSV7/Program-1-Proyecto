@@ -1,0 +1,256 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,JPEG,
+  Vcl.StdCtrls,Vcl.MPlayer, Vcl.ComCtrls, System.ImageList;
+type
+    TForm1 = class(TForm)
+    Timer1: TTimer;
+    Timer2: TTimer;
+    Label1: TLabel;
+    Timer3: TTimer;
+    MediaPlayer1: TMediaPlayer;
+    MediaPlayer2: TMediaPlayer;
+    procedure FormClick(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure Timer2Timer(Sender: TObject);
+    procedure Timer3Timer(Sender: TObject);
+    procedure MediaPlayer2Click(Sender: TObject; Button: TMPBtnType;
+      var DoDefault: Boolean);
+
+  private
+    { Private declarations }
+    Der,Izq,Arb,Abj,Espacio,Music :Boolean;
+    Fondo: TJPEGImage;
+    Balas: Array[1..10]  of TPngImage;
+    X,Y,DX,DY,Mitad_pantalla,Altura,j,Q,Z,C,Balas_j:integer;
+    Avion,Avion_Moviendose,Nave_Movimiento,Disparo :TPngImage;
+
+    procedure Enemigo_explotar;
+
+  public
+      Enemigos: Array[1..100]  of TPngImage;
+
+    { Public declarations }
+
+  end;
+
+var
+  Form1: TForm1;
+  K,I,P,L,M,Balas,Balas_j: Integer;
+
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.Enemigo_explotar;
+var sub_enemigo:word;
+begin
+
+
+end;
+
+procedure TForm1.FormClick(Sender: TObject);
+begin
+  Application.terminate;
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+var I,Bala_i:Integer;
+begin
+   Balas_j:=1;
+
+
+  P:= 50;   //Enemigo.Left:=1;
+  Fondo:= TJPEGImage.Create;
+  Avion:= TPngImage.Create;
+  Avion_Moviendose:= TPngImage.Create;
+  Nave_Movimiento:= TPngImage.Create;
+  Disparo:= TPngImage.Create;
+  Avion.LoadFromFile('Imagenes/Nave_sin_moverse2.png');
+  Avion_Moviendose.LoadFromFile('Imagenes/Nave_moviendose2.png');
+  Disparo.LoadFromFile('Imagenes/Disparo2_1.png');
+  Fondo.LoadFromFile('Imagenes/Fondo.jpg');
+  X:= (Screen.Width-100) div 2;
+  Y:= (Screen.Height-150);
+  Nave_Movimiento:=  Avion;
+
+  Mitad_pantalla:= screen.Width -1150;
+   J:=40;
+  Altura:= screen.Height -750;
+  Q:=0;
+  Balas_j:=1;
+
+      //Enemigos[I].Transparent:=True;
+      //Enemigos[I].Height := 40;
+      //Enemigos[I].Width:= 40;
+
+      //Enemigos[I].TransparentColor:= Enemigos[I].Canvas.Pixels[1,1];
+      //Enemigos[I].TransparentMode:=tmAuto;
+
+     // Enemigos[I].Parent :=TForm1;
+
+      for I := 1 to 33 do
+    Begin
+
+      Enemigos[I] := TPngImage.Create;
+      Enemigos[I].LoadFromFile('Imagenes/Nave_enemiga_2.png');
+
+    End;
+
+  for Bala_i := 1 to 8 do
+    Begin
+      Balas[Bala_i] :=  TPngImage.Create;
+      Balas[Bala_i].LoadFromFile('Imagenes/Disparo2_1.png');
+    End;
+    //MediaPlayer1.Play;
+
+end;
+
+procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+  var Balas_j:integer;
+begin
+      Balas_j:=1;
+      case key of
+      37:Izq:=True;
+      39:Der:=True;
+      38:Arb:=True;
+      40:Abj:=True;
+      32:Begin DY:=Y-Balas[Balas_j].Height;DX:=X+((Avion.Width-Balas[Balas_j].Width) div 2); MediaPlayer2.Play;
+      End;
+      77:Music:=True;
+      end;
+      Label1.Caption:=InttoStr(Key);
+end;
+
+procedure TForm1.FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+begin
+         case key of
+      37:Izq:=False;
+      39:Der:=False;
+      38:Arb:=False;
+      40:Abj:=False;
+      32:Espacio:=True;
+      77:Music:=False;
+      end;
+      Nave_Movimiento:=  Avion;
+
+
+end;
+
+procedure TForm1.FormPaint(Sender: TObject);
+var J,Q,Z,C,Balas_j:Integer;
+
+begin
+    J:=40;
+    Z:=120;
+    C:=200;
+
+
+
+
+    Canvas.StretchDraw(Rect(0,0,screen.Width,screen.Height),Fondo);
+
+
+     //Arreglar lo del tamaño de pantalla
+
+
+   Canvas.Draw(X,Y,Nave_Movimiento);
+   If Espacio Then
+    Begin
+
+    Canvas.Draw(DX,DY,Balas[Balas_j]);
+
+
+    End;
+
+       for K := 1 to 11 do
+     Begin
+       Canvas.Draw(Mitad_pantalla+J ,Altura + Q ,Enemigos[K]);
+       J:=J+80;
+     End;
+            for L := 12 to 20 do
+     Begin
+       Canvas.Draw(Mitad_pantalla+Z ,Altura+80 +Q,Enemigos[L]);
+       Z:=Z+80;
+     End;
+            for M := 23 to 29 do
+     Begin
+       Canvas.Draw(Mitad_pantalla+C ,Altura + 160 + Q ,Enemigos[M]);
+       C:=C+80;
+     End;
+
+
+end;
+procedure TForm1.MediaPlayer2Click(Sender: TObject; Button: TMPBtnType;
+  var DoDefault: Boolean);
+begin
+
+end;
+
+{
+procedure TForm1.Mover_Enemigos;
+begin
+
+end;  }
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin  {
+    for I := 1 to 5 do
+    Begin
+      Enemigo[I].Left := Enemigo.Left +K;
+    if(Enemigo[I]].Left > screen.width-Enemigo[I].Width) or (Enemigo[I].Left<1) then
+    Begin
+       K:= K *(-1);
+     End;
+
+    End;
+        }
+end;
+
+procedure TForm1.Timer2Timer(Sender: TObject);
+begin
+    if Izq and (X - 10 > 1) then Begin X:= X-10;  Nave_Movimiento:=  Avion_Moviendose;  End;
+    if Der and (X + 10 + Avion_Moviendose.Width < screen.Width ) then Begin X:= X+10;  Nave_Movimiento:=  Avion_Moviendose;  End;
+    if Arb and (Y - 10 > 1) then Begin Y:= Y-10;  Nave_Movimiento:=  Avion_Moviendose;  End;
+    if Abj and (Y + 10 + Nave_Movimiento.Height < screen.Height) then Begin Y:= Y+10;  Nave_Movimiento:=  Avion_Moviendose;  End;
+    if Espacio  then DY:=DY-10;
+    if Music then MediaPlayer1.Play;
+
+    Repaint;
+end;
+
+procedure TForm1.Timer3Timer(Sender: TObject);
+ Begin
+
+
+    Mitad_pantalla:= Mitad_pantalla + P;
+
+
+    if (Mitad_pantalla +J + P +700+Enemigos[11].Width * 3>= (Screen.Width-Enemigos[11].width)) or (Mitad_pantalla -Enemigos[11].Width < 1)  then
+     Begin
+       P:=P*(-1);
+     End;
+     if (Mitad_pantalla -Enemigos[11].Width < 1) then
+     Begin
+      Q:=Q+20;
+      Altura:=Altura +Q;
+
+     End;
+
+
+     repaint;
+
+
+end;
+
+end.

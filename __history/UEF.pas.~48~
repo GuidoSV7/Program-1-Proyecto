@@ -1,0 +1,124 @@
+unit UEF;
+interface
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,JPEG,
+  Vcl.StdCtrls,Vcl.MPlayer, Vcl.ComCtrls, System.ImageList,UBala;
+  Type
+   Posicion = Record
+     X,Y:Integer;
+   End;
+   Enemigo_Final = class
+   Private
+
+
+
+   Public
+        X,Y:Integer;
+       Vida:Integer;
+       Imagen_Jefe_Final:TPngImage;
+       Vivo:Boolean;
+       Animacion_off,choque_recibido:Boolean;
+       Contador_animacion:integer;
+       P:Integer;
+       Choque:Boolean;
+       Procedure Cargar_Imagen;
+       Procedure Cargar_Vida;
+       Procedure Cargar_Posicion;
+       Procedure Animacion;
+       Procedure Cargar_Disparo;
+       Procedure Disparar;
+       Procedure Movimiento;
+       Function Daño_recibido(BX,BY:Integer):boolean;
+
+
+
+
+
+
+
+   end;
+implementation
+
+{ Enemigo_Final }
+
+procedure Enemigo_Final.Animacion;
+begin
+     Y:=Y+30;
+     Contador_animacion:=Contador_animacion+1;
+
+end;
+
+procedure Enemigo_Final.Cargar_Disparo;
+begin
+
+end;
+
+procedure Enemigo_Final.Cargar_Imagen;
+begin
+  Imagen_Jefe_Final:= TPngImage.Create;
+   Imagen_Jefe_Final.LoadFromFile('Imagenes/Jefe_Final_2.png');
+end;
+
+procedure Enemigo_Final.Cargar_Posicion;
+begin
+   X:= (Screen.Width- Imagen_Jefe_Final.Width) div 2;
+  Y:= ((Screen.Height-Imagen_Jefe_Final.Height) div 2)-500;
+end;
+
+procedure Enemigo_Final.Cargar_Vida;
+begin
+  Vida:=10;
+  Vivo:=False;
+  Contador_animacion:=1;
+  P:=60;
+end;
+
+Function Enemigo_Final.Daño_recibido(BX,BY:Integer):boolean;
+var I,J:Integer;
+begin
+      Choque_recibido:=False;
+      if (BX = X) and (BY = Y) then
+      Begin
+         Choque_recibido:=True;
+      End;
+      for I := 1 to  700 do
+      Begin
+            for J := 1  to 700 do
+        Begin
+         if ((BX = X+I) and (BY = Y+J) )
+          or ((BX = X-I) and (BY = Y-J))  
+ 
+         then
+         Begin
+           Choque_recibido:=True;
+         End;
+       End;
+
+      End;
+
+        
+     result:=choque_recibido;   
+
+
+
+end;
+
+procedure Enemigo_Final.Disparar;
+begin
+
+end;
+
+procedure Enemigo_Final.Movimiento;
+begin
+    X:=X-P;
+    if
+    ((X+Imagen_Jefe_Final.Width) > (Screen.Width))or (X  < 1)
+     then
+       Begin
+         P:=P*(-1);
+
+       End;
+end;
+
+end.

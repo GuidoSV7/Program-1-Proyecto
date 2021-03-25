@@ -1,0 +1,126 @@
+unit UNave;
+
+interface
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,JPEG,
+  Vcl.StdCtrls,Vcl.MPlayer, Vcl.ComCtrls, System.ImageList,UEnemigos,UBala;
+
+Type
+   Posicion = Record
+     X,Y:Integer;
+
+   End;
+   Nave = class
+   Private
+     B:Bala;
+
+   Public
+       X,Y:Integer;
+       Vida:Integer;
+       Imagen_Nave,Imagen_Nave_Moviendose,Nave_Variable:TPngImage;
+       Choque:Boolean;
+       Imagen_daño1,Imagen_daño2,Imagen_daño3:TpngImage;
+       Procedure Cargar_Crear_Imagenes;
+       Procedure Movimiento;
+       Procedure Turbo(X,Y:Integer);
+       Procedure Disparo;
+       Procedure Disparo_Especial;
+       Function Daño(DXE,DYE:Integer):Boolean;
+       Procedure Daño_recibido;
+
+
+
+
+
+   End;
+implementation
+
+{ Nave }
+
+procedure Nave.Cargar_Crear_Imagenes;
+begin
+   Imagen_Nave:=TPngImage.Create;
+   Imagen_Nave_Moviendose:=TPngImage.Create;
+   Nave_Variable:= TPngImage.Create;
+   Imagen_Nave.LoadFromFile('Imagenes/Nave_sin_moverse2.png');
+   Imagen_Nave_Moviendose.LoadFromFile('Imagenes/Nave_moviendose2.png');
+   Nave_Variable.LoadFromFile('Imagenes/Nave_sin_moverse2.png');
+
+   //Daño Naves
+    {Imagen_daño1:=TPngImage.Create;
+    Imagen_daño2:=TPngImage.Create;
+    Imagen_daño3:=TPngImage.Create;
+    Imagen_daño1.LoadFromFile('');
+    Imagen_daño2.LoadFromFile('');
+    Imagen_daño3.LoadFromFile(''); }
+
+
+
+end;
+
+Function Nave.Daño(DXE,DYE:Integer):Boolean;
+var Daño_boolean:boolean;
+var I,J,K:Integer;
+begin
+    Choque:=False;
+    Daño_boolean:=False;
+    for I := 1 to 27 do
+    Begin
+      if (DXE = X ) and (DYE = Y) and (Vida >= 1) then
+      Begin
+        Daño_boolean:=True;
+        Choque:=True;
+        Break
+      End;
+
+      for J := 1 to 40 do
+      Begin
+        for K := 1 to 40 do
+          Begin
+          if (DXE = X+J) and (DYE = Y+K)
+          or (DXE= X-J) and (DYE = Y-K)
+          then
+         Begin
+             Daño_boolean:=True;
+             Choque:=True;
+            Break
+         End;
+          End;
+      End;
+    End;
+
+    result:=Daño_Boolean;
+
+end;
+
+
+
+procedure Nave.Daño_recibido;
+begin
+
+end;
+
+procedure Nave.Disparo;
+begin
+
+end;
+
+procedure Nave.Disparo_Especial;
+begin
+
+end;
+
+procedure Nave.Movimiento;
+begin
+  X:= (Screen.Width- Imagen_Nave.Width) div 2;
+  Y:= (Screen.Height-Imagen_Nave.Height);
+  Vida:=5;
+end;
+
+procedure Nave.Turbo(X, Y: Integer);
+begin
+
+end;
+
+end.

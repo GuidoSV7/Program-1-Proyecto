@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/03/01 22:44:30.000.793,=E:\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2021/03/03 10:55:36.000.870,C:\Users\ASUS\Desktop\Proyecto Program 1\Unit1.dfm=E:\Embarcadero\Unit1.dfm</Transaction>
+    <Transaction>2021/03/03 10:55:36.000.870,C:\Users\ASUS\Desktop\Proyecto Program 1\Unit1.pas=E:\Embarcadero\Unit1.pas</Transaction>
+    <Transaction>2021/03/03 10:57:04.000.572,C:\Users\ASUS\Desktop\Proyecto Program 1\Project1.dproj=E:\Embarcadero\Project1.dproj</Transaction>
+    <Transaction>2021/03/09 19:38:37.000.007,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UPrincipal.dfm=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.dfm</Transaction>
+    <Transaction>2021/03/09 19:38:37.000.007,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UPrincipal.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/09 19:39:36.000.734,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit2.pas</Transaction>
+    <Transaction>2021/03/09 19:39:48.000.325,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit2.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UBala.pas</Transaction>
+    <Transaction>2021/03/09 19:39:48.000.325,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit2.dfm=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UBala.dfm</Transaction>
+    <Transaction>2021/03/09 19:43:38.000.645,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/09 19:43:50.000.216,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UBala.pas</Transaction>
+    <Transaction>2021/03/11 19:56:54.000.494,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/11 19:57:05.000.624,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UNave.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/11 19:57:19.000.144,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/11 19:57:28.000.884,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UEnemigos.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/12 18:40:28.000.611,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/12 18:43:01.000.005,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UEF.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/13 11:16:51.000.594,=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/13 11:17:08.000.478,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UEfectos.pas=C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\Unit1.pas</Transaction>
+    <Transaction>2021/03/13 11:20:03.000.431,C:\Users\ASUS\Desktop\Nuevo Proyecto\Proyecto Program 1\UEfectos.pas=</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="UBala.pas"/>
+    <File Path="UEnemigos.pas"/>
+    <File Path="UNave.pas"/>
+    <File Path="UPrincipal.pas"/>
+    <File Path="UPrincipal.dfm"/>
+    <File Path="UEF.pas"/>
+  </ProjectSortOrder>
+</BorlandProject>
